@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Password;
-
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 Route::get('/', function () {
     return view('index');
@@ -30,9 +33,8 @@ Route::controller(SignInController::class)->group(function () {
 
 Route::controller(ForgotPasswordController::class)->group(function () {
     Route::get('/getForgotPassword','getForgotPassword')->middleware('guest')->name('getForgotPassword');
+    Route::post('/forgotPassword','forgotPassword')->middleware('guest')->name('forgotPassword');
+    Route::get('/getResetPassword/{token}', 'getResetPassword')->middleware('guest')->name('getResetPassword');
     Route::post('/resetPassword','resetPassword')->middleware('guest')->name('resetPassword');
 });
 
-Route::controller(ResetPasswordController::class)->group(function () {
-
-});

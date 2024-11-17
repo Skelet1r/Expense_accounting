@@ -12,8 +12,9 @@
     @component('header')
     @endcomponent
 
+    <h1>jshfhsglsaygfh</h1>
 
-    <form class="registerForm border-solid rounded-lg  bg-slate-100 space-y-6" action="{{ route('resetPassword') }}" method="POST">
+    <form class="registerForm border-solid rounded-lg  bg-slate-100 space-y-6" action="{{ route('forgotPassword') }}" method="POST">
         @csrf
         <h1 class="registerTitle text-2xl">Reset Your Password</h1>
         <input name="email" class="w-full registerEmail border-solid rounded-lg @error('email') border-red-500 @enderror" " type="email" placeholder="email" value="{{ old('email') }}">

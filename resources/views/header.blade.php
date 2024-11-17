@@ -41,6 +41,16 @@
                             Create Account
                         </a>
                     </li>
+                    <li>
+                        <div>
+                            <form method="POST" action="{{ route('forgotPassword') }}">
+                                @csrf
+                                <a onclick="event.preventDefault(); this.closest('form').submit();" class="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200" href="{{ route('getForgotPassword') }}">
+                                    Change Password
+                                </a>
+                            </form>
+                        </div>
+                    </li>
                 </ul>
             </nav>
         </div>
