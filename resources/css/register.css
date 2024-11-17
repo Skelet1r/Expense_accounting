@@ -1,0 +1,14 @@
+.registerForm{
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
+    flex-direction: column;
+    padding: 50px ;
+    margin: 200px 650px;
+}
+
+
+.registerTitle, .registerName, .registerEmail, .registerPassword, .registerSubmit{
+    margin:10px;
+}
+
