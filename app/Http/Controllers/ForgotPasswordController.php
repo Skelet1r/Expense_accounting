@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Http\RedirectResponse;
 
 class ForgotPasswordController extends Controller
 {
@@ -27,15 +28,14 @@ class ForgotPasswordController extends Controller
         );
 
         return $status === Password::RESET_LINK_SENT
-            ? redirect()->route('getForgotPassword')->with(['status' => __($status)]) // Остаёмся на странице смены пароля
-            : redirect()->route('getForgotPassword')->withErrors(['email' => __($status)]);
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
     }
-
     public function getResetPassword(Request $request){
         return view("resetPassword", ["request"=> $request]);
     }
 
-    public function resetPassword(Request $request){
+    public function resetPassword(Request $request): RedirectResponse{
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
