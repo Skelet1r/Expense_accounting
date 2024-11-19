@@ -29,7 +29,7 @@
                 <input type="checkbox" id="remember" name="remember" class="h-4 w-4 rounded border-gray-300 text-black focus:ring-gray-800">
                 <label for="remember">Remember me</label>
             </div>
-            <a href="#" class="text-sm font-medium text-black hover:text-gray-800">Forgot password?</a>
+            <a href="{{ route('getForgotPassword') }}" class="text-sm font-medium text-black hover:text-gray-800">Forgot password?</a>
         </div>
         <button class="registerSubmit hover:bg-gray-800 cursor-pointer bg-black text-white rounded-lg p-2 transition-transform duration-100 ease-in-out w-full" type="submit">Submit</button>
     </form>

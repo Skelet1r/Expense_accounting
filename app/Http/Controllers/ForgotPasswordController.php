@@ -31,8 +31,8 @@ class ForgotPasswordController extends Controller
             : redirect()->route('getForgotPassword')->withErrors(['email' => __($status)]);
     }
 
-    public function getResetPassword(string $token){
-        return view("forgotPassword", ["token"=> $token]);
+    public function getResetPassword(Request $request){
+        return view("resetPassword", ["request"=> $request]);
     }
 
     public function resetPassword(Request $request){
@@ -44,19 +44,19 @@ class ForgotPasswordController extends Controller
 
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
+            function ($user) use ($request) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
-
-                $user->save();
-
-                event(new PasswordReset($user));
+                    'password' => Hash::make($request->password),
+                    'remember_token' => Str::random(60)
+                ])->save();
             }
         );
 
-        return $status === Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))
-                    : back()->withErrors(['email' => [__($status)]]);
+        if ($status == Password::PASSWORD_RESET){
+            return redirect()->route('getSignin')->with('status', trans($status));
+        }
+
+        return back()->withInput($request->only('email'))
+            ->withErrors(['email'=> trans($status)]);
     }
 }

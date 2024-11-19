@@ -34,7 +34,7 @@ Route::controller(SignInController::class)->group(function () {
 Route::controller(ForgotPasswordController::class)->group(function () {
     Route::get('/getForgotPassword','getForgotPassword')->middleware('guest')->name('getForgotPassword');
     Route::post('/forgotPassword','forgotPassword')->middleware('guest')->name('forgotPassword');
-    Route::get('/getResetPassword/{token}', 'getResetPassword')->middleware('guest')->name('getResetPassword');
+    Route::get('/getResetPassword/{token}', 'getResetPassword')->middleware('guest')->name('password.reset');
     Route::post('/resetPassword','resetPassword')->middleware('guest')->name('resetPassword');
 });
 

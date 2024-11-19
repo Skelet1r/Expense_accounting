@@ -17,6 +17,11 @@
     <form class="registerForm border-solid rounded-lg  bg-slate-100 space-y-6" action="{{ route('forgotPassword') }}" method="POST">
         @csrf
         <h1 class="registerTitle text-2xl">Reset Your Password</h1>
+        @if (session('status'))
+            <div class="success-message bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+                {{ session('status') }}
+            </div>
+        @endif
         <input name="email" class="w-full registerEmail border-solid rounded-lg @error('email') border-red-500 @enderror" " type="email" placeholder="email" value="{{ old('email') }}">
         @error('email')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>

@@ -17,7 +17,7 @@ class SignInController extends Controller
     public function Signin(Request $request){
         $credentials = $request->validate([
             'email' => 'required|string|email',
-            'password' => 'required|string',
+            'password' => 'required|string|min:8',
         ]);
 
         if(!Auth::attempt($credentials, $request->boolean('remember'))){
