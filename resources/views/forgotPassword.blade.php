@@ -22,7 +22,6 @@
                 {{ session('status') }}
             </div>
         @endif
-        <h1 class="registerTitle text-2xl">Forgot Your Password?</h1>
         <input name="email" class="w-full registerEmail border-solid rounded-lg @error('email') border-red-500 @enderror" " type="email" placeholder="email" value="{{ old('email') }}">
         @error('email')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
