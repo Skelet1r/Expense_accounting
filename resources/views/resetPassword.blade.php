@@ -23,7 +23,7 @@
 
         <h1 class="registerTitle text-2xl">Reset your password</h1>
 
-        <input name="email" class="w-full registerEmail border-solid rounded-lg @error('email') border-red-500 @enderror" " type="email" placeholder="email" value="{{ old('email', $request->email) }}">
+        <input name="email" class="w-full registerEmail border-solid rounded-lg @error('email') border-red-500 @enderror" type="email" placeholder="email" value="{{ old('email', $request->email) }}">
         @error('email')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror

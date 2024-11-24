@@ -29,7 +29,7 @@ class SignInController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('index');
+        return redirect()->route('getIndex');
     }
 
     public function logout(Request $request){

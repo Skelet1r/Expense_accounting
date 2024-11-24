@@ -1,20 +1,10 @@
 <?php
 
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\SignInController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
-
-Route::get('/', function () {
-    return view('index');
-})->name('index');
 
 Route::get('/header', function () {
     return view('header');
@@ -38,3 +28,17 @@ Route::controller(ForgotPasswordController::class)->group(function () {
     Route::post('/resetPassword','resetPassword')->middleware('guest')->name('resetPassword');
 });
 
+Route::controller(ExpenseController::class)->group(function () {
+    Route::get('/', 'getIndex')->name('getIndex');
+
+    Route::get('/getAddBudget', 'getAddBudget')->name('getAddBudget');
+    Route::post('/saveBudget','saveBudget')->name('saveBudget');
+
+    Route::get('/getIncome', 'getIncome')->name('getIncome');
+    Route::post('/saveIncome','saveIncome')->name('saveIncome');
+
+    Route::get('/getConsumption', 'getConsumption')->name('getConsumption');
+    Route::post('/saveConsumption','saveConsumption')->name('saveConsumption');
+
+    Route::delete('/delete/{expense}', 'delete')->name('delete');
+});
