@@ -15,18 +15,18 @@
 
     <form class="registerForm border-solid rounded-lg  bg-slate-100 space-y-6" action="{{ route('saveConsumption') }}" method="POST">
         @csrf
-        <h1 class="registerTitle text-2xl">Новый расход</h1>
-        <input name="name" class="w-full registerEmail border-solid rounded-lg @error('name') border-red-500 @enderror" type="text" placeholder="Имя расхода">
+        <h1 class="registerTitle text-2xl">New consumption</h1>
+        <input name="name" class="w-full registerEmail border-solid rounded-lg @error('name') border-red-500 @enderror" type="text" placeholder="Consumption name" value="{{ old('name') }}">
         @error('name')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
 
-        <input name="description" class="w-full registerEmail border-solid rounded-lg @error('description') border-red-500 @enderror" type="text" placeholder="Описание расхода">
+        <input name="description" class="w-full registerEmail border-solid rounded-lg @error('description') border-red-500 @enderror" type="text" placeholder="Consumption description" value="{{ old('description') }}">
         @error('description')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
 
-        <input name="money" class="w-full registerEmail border-solid rounded-lg @error('money') border-red-500 @enderror" type="number" placeholder="Расход">
+        <input name="money" class="w-full registerEmail border-solid rounded-lg @error('money') border-red-500 @enderror" type="number" placeholder="Consumption" value="{{ old('money') }}">
         @error('money')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror

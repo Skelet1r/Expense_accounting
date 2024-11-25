@@ -29,7 +29,7 @@ Route::controller(ForgotPasswordController::class)->group(function () {
 });
 
 Route::controller(ExpenseController::class)->group(function () {
-    Route::get('/', 'getIndex')->name('getIndex');
+    Route::get('/', 'getIndex')->middleware('auth')->name('getIndex');
 
     Route::get('/getAddBudget', 'getAddBudget')->name('getAddBudget');
     Route::post('/saveBudget','saveBudget')->name('saveBudget');

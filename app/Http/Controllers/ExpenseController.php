@@ -19,13 +19,10 @@ class ExpenseController extends Controller
 
         $dateSorts = ExpenseModel::query();
 
-        // Получаем значение сортировки из запроса (по умолчанию 'asc')
         $sortOrder = $request->input('sort_order', 'asc');
 
-        // Применяем сортировку по дате
         $dateSorts = $dateSorts->orderBy('created_at', $sortOrder)->get();
 
-        // Группируем по дате
         $groupedByDate = $dateSorts->groupBy(function($dateSort) {
             return \Carbon\Carbon::parse($dateSort->created_at)->format('Y-m-d');
         });

@@ -15,18 +15,18 @@
 
     <form class="registerForm border-solid rounded-lg  bg-slate-100 space-y-6" action="{{ route('saveIncome') }}" method="POST">
         @csrf
-        <h1 class="registerTitle text-2xl">Новый доход</h1>
-        <input name="name" class="w-full registerEmail border-solid rounded-lg @error('name') border-red-500 @enderror" type="text" placeholder="Имя дохода">
+        <h1 class="registerTitle text-2xl">New income</h1>
+        <input name="name" class="w-full registerEmail border-solid rounded-lg @error('name') border-red-500 @enderror" type="text" placeholder="Income name" value="{{ old('name') }}">
         @error('name')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
 
-        <input name="description" class="w-full registerEmail border-solid rounded-lg @error('description') border-red-500 @enderror" type="text" placeholder="Описание дохода">
+        <input name="description" class="w-full registerEmail border-solid rounded-lg @error('description') border-red-500 @enderror" type="text" placeholder="Income description" value="{{ old('description') }}">
         @error('description')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
 
-        <input name="money" class="w-full registerEmail border-solid rounded-lg @error('money') border-red-500 @enderror" type="number" placeholder="Доход">
+        <input name="money" class="w-full registerEmail border-solid rounded-lg @error('money') border-red-500 @enderror" type="number" placeholder="Income" value="{{ old('money') }}">
         @error('money')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
